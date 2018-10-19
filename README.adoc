@@ -17,13 +17,31 @@ You'll build an application that uses Spring's `RestTemplate` to retrieve a rand
 :java_version: 1.8
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/prereq_editor_jdk_buildtools.adoc[]
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/how_to_complete_this_guide.adoc[]
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-gradle.adoc[]
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-maven.adoc[]
+== Getting Started with Spring Initializr
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-sts.adoc[]
+We recommend using the Spring Initializr to get started with this project. To do so:
+
+. Go to https://start.spring.io and choose `Web` as the only dependency.
+. Set the project metadata (*Group*, *Artifact*, *Name*, *Description*, and possibly other
+values) to suit your needs.
+. Click *Generate Project*.
+
+For this example, we set the *Group* to "hello", the *Artifact* to "consuming-rest-service",
+the *Name* to empty, the *Description* to "Consuming a Restful Web Service", and the
+*Package Name* to "hello".
+
+The Spring Initializr creates a zip file that you can download and unzip in the directory
+you want to use for your project.
+
+NOTE: The Spring Initializr can create either Maven or Gradle projects. This guide supports
+both.
+
+
+
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/hide-show-sts.adoc
+
 
 
 [[initial]]
@@ -74,6 +92,8 @@ This uses the same annotations but simply maps onto other data fields.
 
 == Make the application executable
 
+NOTE: The Spring Initializr creates a file called `Application.Java` for you. For this guide, we need to replace it.
+
 Although it is possible to package this service as a traditional link:/understanding/WAR[WAR] file for deployment to an external application server, the simpler approach demonstrated below creates a standalone application. You package everything in a single, executable JAR file, driven by a good old Java `main()` method. Along the way, you use Spring's support for embedding the link:/understanding/Tomcat[Tomcat] servlet container as the HTTP runtime, instead of deploying to an external instance.
 
 Now you can write the `Application` class that uses `RestTemplate` to fetch the data from our Spring Boot quotation service.
@@ -108,6 +128,8 @@ Here you've only used `RestTemplate` to make an HTTP `GET` request. But `RestTem
 
 == Managing the Application Lifecycle with Spring Boot
 
+NOTE: The Spring Initializr creates a file called `Application.Java` for you. For this guide to work, we need to replace it.
+
 So far we haven't used Spring Boot in our application, but there are some advantages in doing so, and it isn't hard to do. One of the advantages is that we might want to let Spring Boot manage the message converters in the `RestTemplate`, so that customizations are easy to add declaratively. To do that we use `@SpringBootApplication` on the main class and convert the main method to start it up, like in any Spring Boot application. Finally we move the `RestTemplate` to a `CommandLineRunner` callback so it is executed by Spring Boot on startup:
 
 `src/main/java/hello/Application.java`
@@ -133,6 +155,16 @@ NOTE: If you see the error `Could not extract response: no suitable HttpMessageC
 
 == Summary
 Congratulations! You have just developed a simple REST client using Spring.
+
+
+
+== Spring Trails
+
+This guide is on the file://c:/spring/demo/trails/trails.html#trails-rest[REST] trail.
+file://c:/spring/demo/gs-rest-service/README.html[Previous topic].
+file://c:/spring/demo/gs-rest-service-cors/README.html[Next topic].
+
+
 
 == See Also
 
